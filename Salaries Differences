@@ -1,8 +1,0 @@
-Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
-
-with t1 as (
-select b.department, max(a.salary) as salary from db_employee a join db_dept b on a.department_id = b.id
-group by b.department 
-having b.department in ('marketing','engineering')
-)
-select ((select salary from t1 where department = 'marketing') - (select salary from t1 where department = 'engineering')) as difference;
